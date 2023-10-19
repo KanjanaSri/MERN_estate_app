@@ -126,15 +126,12 @@ export default function UpdateListing() {
       setFormData({ ...formData, [e.target.id]: e.target.checked });
     }
 
-    // Input type Number
-    if (e.target.type === "number") {
-      setFormData({
-        ...formData,
-        [e.target.id]: e.target.valueAsNumber,
-      });
-    }
-    // Input string values
-    if (e.target.type === "text" || e.target.type === "textarea") {
+    // Input string and number values
+    if (
+      e.target.type === "text" ||
+      e.target.type === "textarea" ||
+      e.target.type === "number"
+    ) {
       setFormData({
         ...formData,
         [e.target.id]: e.target.value,
@@ -307,7 +304,10 @@ export default function UpdateListing() {
               />
               <div className="flex flex-col items-center">
                 <p>Regular Price</p>
-                <span className="text-xs">($ / Month)</span>
+
+                {formData.type === "rent" && (
+                  <span className="text-xs">($ / month)</span>
+                )}
               </div>
             </div>
 
@@ -325,7 +325,10 @@ export default function UpdateListing() {
                 />
                 <div className="flex flex-col items-center">
                   <p>Discounted Price</p>
-                  <span className="text-xs">($ / Month)</span>
+
+                  {formData.type === "rent" && (
+                    <span className="text-xs">($ / month)</span>
+                  )}
                 </div>
               </div>
             )}
@@ -347,7 +350,7 @@ export default function UpdateListing() {
               id="image"
               accept="image/*"
               multiple
-              className="p-3 border border-gray-300 round w-full"
+              className="p-3 border border-gray-300 rounded w-full"
             />
             <button
               type="button"

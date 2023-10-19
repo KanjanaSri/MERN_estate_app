@@ -286,7 +286,9 @@ export default function CreateListing() {
               />
               <div className="flex flex-col items-center">
                 <p>Regular Price</p>
-                <span className="text-xs">($ / Month)</span>
+                {formData.type === "rent" && (
+                  <span className="text-xs">($ / month)</span>
+                )}
               </div>
             </div>
 
@@ -304,7 +306,9 @@ export default function CreateListing() {
                 />
                 <div className="flex flex-col items-center">
                   <p>Discounted Price</p>
-                  <span className="text-xs">($ / Month)</span>
+                  {formData.type === "rent" && (
+                    <span className="text-xs">($ / month)</span>
+                  )}
                 </div>
               </div>
             )}
@@ -326,7 +330,7 @@ export default function CreateListing() {
               id="image"
               accept="image/*"
               multiple
-              className="p-3 border border-gray-300 round w-full"
+              className="p-3 border border-gray-300 rounded w-full"
             />
             <button
               type="button"
