@@ -118,12 +118,10 @@ export default function Listing() {
               )}
             </div>
 
-            <div className="mt-1">
-              <p className="font-semibold text-black">Description</p>
-              <p className="text-slate-800 break-words">
-                {listing.description}
-              </p>
-            </div>
+            <p className="text-slate-800">
+              <span className="font-semibold text-black">Description - </span>
+              {listing.description}
+            </p>
 
             <ul className="text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">
               <li className="flex items-center gap-1 whitespace-nowrap ">
