@@ -5,6 +5,7 @@ import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
@@ -78,11 +79,11 @@ export default function Home() {
 
       {/* Swiper */}
       <Swiper navigation>
-        {offerListings?.length > 0 &&
-          offerListings?.map((listing) => (
+        {rentListings?.length > 0 &&
+          rentListings?.map((listing) => (
             <SwiperSlide>
               <div
-                key={listing._id}
+                key={uuidv4()}
                 className="h-[500px]"
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
@@ -94,7 +95,7 @@ export default function Home() {
       </Swiper>
 
       {/* Listings results for offer, sale and rent */}
-      <div className="max-w-6xl mx-auto p-3 flex- flex-col gap-8 my-10">
+      <div className="max-w-7xl mx-auto p-3 flex- flex-col gap-8 my-10">
         {offerListings?.length > 0 && (
           <div>
             <div className="my-3">
@@ -108,9 +109,9 @@ export default function Home() {
                 Show more offers
               </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-9">
               {offerListings.map((listing) => (
-                <ListingItem key={listing._id} listing={listing} />
+                <ListingItem key={uuidv4()} listing={listing} />
               ))}
             </div>
           </div>
@@ -129,9 +130,9 @@ export default function Home() {
                 Show more places for rent
               </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-9">
               {rentListings.map((listing) => (
-                <ListingItem key={listing._id} listing={listing} />
+                <ListingItem key={uuidv4()} listing={listing} />
               ))}
             </div>
           </div>
@@ -150,9 +151,9 @@ export default function Home() {
                 Show more places for sale
               </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-9">
               {saleListings.map((listing) => (
-                <ListingItem key={listing._id} listing={listing} />
+                <ListingItem key={uuidv4()} listing={listing} />
               ))}
             </div>
           </div>
